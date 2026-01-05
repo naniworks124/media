@@ -16,6 +16,7 @@ import { useClipboardSuggestion } from '~/hooks/use-clipboard-suggestion';
 
 import { useHapticFeedback } from '../hooks/use-haptic';
 import { MediaView } from './media-view';
+import { ModeToggle } from './mode-toggle'; // ✅ restored
 
 // Separate component to utilize useFormStatus
 function SubmitButton() {
@@ -88,9 +89,7 @@ export function MediaForm() {
         }
 
         if (!response.ok || data.error) {
-          throw new Error(
-            data.error || 'Unable to analyze this URL.',
-          );
+          throw new Error(data.error || 'Unable to analyze this URL.');
         }
 
         const endTime = performance.now();
@@ -124,13 +123,14 @@ export function MediaForm() {
       <div className="relative w-full max-w-5xl sm:p-12">
         <div className="relative z-10 space-y-10">
           <div>
-            {/* Title */}
+            {/* Title + Theme Toggle */}
             <div className="flex items-center justify-between">
               <a href="/" className="no-underline">
                 <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
                   Naa Media
                 </h1>
               </a>
+              <ModeToggle /> {/* ✅ Light / Dark / Auto */}
             </div>
 
             {/* Description */}
