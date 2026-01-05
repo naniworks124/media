@@ -17,7 +17,7 @@ interface MediaViewProps {
 }
 
 export function MediaView({ data, url }: MediaViewProps) {
-  const [isTextView, setIsTextView] = useState(false);
+  const [isTextView, setIsTextView] = useState(true);
 
   const parsedData = useMemo(() => {
     try {
